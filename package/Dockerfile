@@ -13,7 +13,6 @@ RUN apt-get update && \
         iperf \
         iperf3 \
         iproute2 \
-        ipsec-tools \
         ipset \
         iptables \
         iputils-ping \
