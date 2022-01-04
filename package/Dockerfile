@@ -46,15 +46,11 @@ RUN apt-get update && \
     mv /usr/sbin/traceroute /usr/bin/traceroute && \
     curl -sLf https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 > /usr/bin/docker && \
     chmod +x /usr/bin/docker && \
-    curl -sLf https://storage.googleapis.com/kubernetes-release/release/v1.16.8/bin/linux/amd64/kubectl > /usr/local/bin/kubectl-1.16 && \
-    curl -sLf https://storage.googleapis.com/kubernetes-release/release/v1.17.4/bin/linux/amd64/kubectl > /usr/local/bin/kubectl-1.17 && \
-    curl -sLf https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl > /usr/local/bin/kubectl-1.18 && \
-    chmod +x /usr/local/bin/kubectl* && \
-    ln -s /usr/local/bin/kubectl-1.18 /usr/local/bin/kubectl && \
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && mv kubectl /usr/local/bin/ && \
     mkdir /root/.kube
 
 ENV LOGLEVEL_TAG v0.1
 RUN curl -sfSL https://github.com/rancher/loglevel/releases/download/${LOGLEVEL_TAG}/loglevel-amd64-${LOGLEVEL_TAG}.tar.gz | tar xvzf - -C /usr/bin
 COPY swiss-army-knife /usr/bin/
-WORKDIR /root
-CMD ["swiss-army-knife"]
+WORKDIR /
+CMD ["swiss-army-knife --port 8080"]
