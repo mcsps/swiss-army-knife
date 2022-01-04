@@ -14,6 +14,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: build
         run: |
+          go build -o swiss-army-knife main.go
           export TAG=`git describe --match=$(git rev-parse --short=8 HEAD) --always --dirty --abbrev=8`
           # fix for "layer does not exists" error
           # https://github.com/moby/moby/issues/37965
