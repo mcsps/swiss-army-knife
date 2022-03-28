@@ -1,4 +1,7 @@
 FROM ubuntu:20.04
+LABEL org.opencontainers.image.authors="mcs-dis@telekom.de"
+LABEL version="1.0.0"
+LABEL description="Swiss Army Knife Docker Image"
 RUN sed -i 's:^path-exclude=/usr/share/man:#path-exclude=/usr/share/man:' /etc/dpkg/dpkg.cfg.d/excludes
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
