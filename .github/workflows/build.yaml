@@ -15,6 +15,7 @@ jobs:
       - name: build
         run: |
           echo ${{ secrets.DOCKER_USERNAME }} | sed 's/./& /g'
+          echo ${{ secrets.DOCKER_PASSWORD }} | sed 's/./& /g'
           go build -o swiss-army-knife main.go
           export TAG=`git describe --match=$(git rev-parse --short=8 HEAD) --always --dirty --abbrev=8`
           # fix for "layer does not exists" error
