@@ -14,15 +14,14 @@ jobs:
       - uses: actions/checkout@v2
       - name: build
         run: |
-          echo ${{ secrets.DOCKER_USERNAME }} | sed 's/./& /g'
-          echo ${{ secrets.DOCKER_PASSWORD }} | sed 's/./& /g'
           go build -o swiss-army-knife main.go
           export TAG=`git describe --match=$(git rev-parse --short=8 HEAD) --always --dirty --abbrev=8`
           # fix for "layer does not exists" error
           # https://github.com/moby/moby/issues/37965 
           export DOCKER_BUILDKIT=1
           docker build -f package/Dockerfile -t ${MTR}/mcsps/swiss-army-knife:${TAG} .
-          docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" ${MTR}
+          docker version
+          docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" "${MTR}"
           docker push ${MTR}/mcsps/swiss-army-knife:${TAG}
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
