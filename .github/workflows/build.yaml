@@ -22,7 +22,7 @@ jobs:
           docker build -f package/Dockerfile -t mtr.external.otc.telekomcloud.com/mcsps/swiss-army-knife:${TAG} .
           docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" mtr.external.otc.telekomcloud.com
           docker images
-          docker push mtr.external.otc.telekomcloud.com/mcsps/swiss-army-knife:${TAG}
+          docker push mtr.devops.telekom.de/mcsps/swiss-army-knife:${TAG}
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
