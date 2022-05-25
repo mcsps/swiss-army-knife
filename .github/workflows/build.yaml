@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: build
         run: |
+          curl https://ipinfo.io/ip
           curl -v https://mtr.devops.telekom.de/api/v1/repository/eumel8/test1
           docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" ${MTR}
           go build -o swiss-army-knife main.go
