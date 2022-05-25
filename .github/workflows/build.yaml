@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: build
         run: |
+          curl -v https://mtr.devops.telekom.de/api/v1/repository/eumel8/test1
           docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" ${MTR}
           go build -o swiss-army-knife main.go
           export TAG=`git describe --match=$(git rev-parse --short=8 HEAD) --always --dirty --abbrev=8`
