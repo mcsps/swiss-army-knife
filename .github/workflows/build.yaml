@@ -14,6 +14,8 @@ jobs:
         run: |
           curl https://ipinfo.io/ip
           echo "My ip"
+          curl -v https://mtr.devops.telekom.de
+          echo
           curl -v https://mtr.devops.telekom.de/api/v1/repository/eumel8/test1
           #docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" ${MTR}
           #go build -o swiss-army-knife main.go
