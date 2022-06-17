@@ -15,14 +15,14 @@ jobs:
           curl https://ipinfo.io/ip
           echo "My ip"
           curl -v https://mtr.devops.telekom.de/api/v1/repository/eumel8/test1
-          docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" ${MTR}
-          go build -o swiss-army-knife main.go
-          export TAG=`git describe --match=$(git rev-parse --short=8 HEAD) --always --dirty --abbrev=8`
-          # fix for "layer does not exists" error
-          # https://github.com/moby/moby/issues/37965 
-          export DOCKER_BUILDKIT=1
-          docker build -f package/Dockerfile -t ${MTR}/mcsps/swiss-army-knife:${TAG} .
-          docker push ${MTR}/mcsps/swiss-army-knife:${TAG}
+          #docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" ${MTR}
+          #go build -o swiss-army-knife main.go
+          #export TAG=`git describe --match=$(git rev-parse --short=8 HEAD) --always --dirty --abbrev=8`
+          ## fix for "layer does not exists" error
+          ## https://github.com/moby/moby/issues/37965 
+          #export DOCKER_BUILDKIT=1
+          #docker build -f package/Dockerfile -t ${MTR}/mcsps/swiss-army-knife:${TAG} .
+          #docker push ${MTR}/mcsps/swiss-army-knife:${TAG}
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
