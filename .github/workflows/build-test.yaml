@@ -1,4 +1,4 @@
-name: CI
+name: CI-Test
 # https://github.com/actions/virtual-environments
 on:
   push:
@@ -26,8 +26,8 @@ jobs:
           docker build -f package/Dockerfile -t ${MTR}/${REPO}/${IMAGE}:${TAG} .
           docker push ${MTR}/mcsps/swiss-army-knife:${TAG}
         env:
-          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-          MTR: mtr.devops.telekom.de
+          DOCKER_USERNAME: ${{secrets.MTRTEST_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.MTRTEST_PASSWORD}}
+          MTR: mtr.test.devops.telekom.de
           REPO: eumel8
           IMAGE: swiss-army-knife
