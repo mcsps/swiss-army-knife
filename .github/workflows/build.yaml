@@ -29,5 +29,5 @@ jobs:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
           MTR: mtr.devops.telekom.de
-          REPO: eumel8
+          REPO: mcsps
           IMAGE: swiss-army-knife
