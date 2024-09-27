@@ -28,7 +28,7 @@ RUN apt-get update && \
         manpages-posix \
         mtr \
         net-tools \
-        netcat \
+        netcat-traditional \
         netcat-openbsd \
         openssl \
         openssh-client \
