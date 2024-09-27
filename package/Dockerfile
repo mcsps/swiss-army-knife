@@ -44,7 +44,6 @@ RUN apt-get update && \
         vim \
         wget && \
     rm -rf /var/lib/apt/lists/* && \
-    mv /usr/sbin/tcpdump /usr/bin/tcpdump && \
     mv /usr/sbin/traceroute /usr/bin/traceroute && \
     curl -sLf https://get.docker.com/builds/Linux/x86_64/docker-1.10.3 > /usr/bin/docker && \
     chmod +x /usr/bin/docker && \
