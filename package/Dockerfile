@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 LABEL org.opencontainers.image.authors="mcs-dis@telekom.de"
 LABEL version="1.0.0"
 LABEL description="Swiss Army Knife Docker Image"
